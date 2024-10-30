@@ -1,0 +1,43 @@
+
+
+services:
+  ntp:
+    image: cturra/ntp 
+    container_name: ntp
+    restart: always
+    cap_add:
+      - SYS_TIME
+    ports:
+      - "123:123/udp"
+    networks:
+      ci_network:
+        ipv4_address: 172.20.0.11
+    environment:
+      - TZ=Europe/Moscow
+
+  jenkins:
+    build: 
+      context: ./jenkins  
+      dockerfile: Dockerfile 
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ntp
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    networks:
+      ci_network:
+        ipv4_address: 172.20.0.13
+
+networks:
+  ci_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  jenkins_home: 
