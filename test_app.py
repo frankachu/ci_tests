@@ -1,5 +1,5 @@
 import pytest
-from app import square, cube, check
+from app import square, cube
 
 def test_square():
     assert square(2) == 4
@@ -14,3 +14,6 @@ def test_cube():
     assert cube(0.0) == 0
     with pytest.raises(ValueError):
         cube("text")    # "text" is not accecptable type
+
+
+
