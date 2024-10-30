@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                // Create venv and install dependecies
+                // Create venv and install dependencies
                 sh '''
                    python3 -m venv venv
                    . venv/bin/activate
