@@ -6,11 +6,11 @@ def test_square():
     assert square(-3.5) == 12.25
     assert square(0) == 0
     with pytest.raises(ValueError):
-        square("text")    # Ошибка, так как "text" не является float
+        square("text")    # "text" is not accecptable type
 
 def test_cube():
-    assert cube(2.0) == 8.0
-    assert cube(-3.0) == -27.0
-    assert cube(0.0) == 0.0
+    assert cube(2.0) == 8
+    assert cube(-3) == -27
+    assert cube(0.0) == 0
     with pytest.raises(ValueError):
-        cube("text")    # Ошибка, так как "text" не является float
+        cube("text")    # "text" is not accecptable type
